@@ -85,7 +85,11 @@ LIMIT 1;
 9. Retieve the average age of the users who have rated the movie "Eye for an Eye (1996)"
 
 ```SQL
-<your SQL query here>
+SELECT DISTINCT m.title, ROUND(AVG(us.age), 2) AS "average_age" FROM movies AS m
+JOIN ratings AS ra ON ra.movie_id = m.id
+JOIN users AS us ON us.id = ra.user_id
+WHERE m.title = 'Eye for an Eye (1996)'
+GROUP BY m.title;
 ```
 
 10. List the top 10 movies for Lawyers released between 1990 and 1995.
