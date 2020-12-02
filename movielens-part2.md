@@ -39,7 +39,10 @@ LIMIT 1;
 4. List all the movies titles and the number of genres each movie has associated.
 
 ```SQL
-<your SQL query here>
+SELECT m.title, COUNT(*) AS "cant_of_genres_associated" FROM movies AS m
+JOIN genres_movies AS gm ON m.id = gm.movie_id
+JOIN genres AS g ON g.id = gm.genre_id
+GROUP BY m.title;
 ```
 
 5. List the number of users by occupation.
