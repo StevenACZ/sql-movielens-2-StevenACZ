@@ -28,7 +28,12 @@ JOIN genres AS g ON gm.genre_id = g.id GROUP BY g.name;
 3. Retrieve only the genre which have more movies associated.
 
 ```SQL
-<your SQL query here>
+SELECT g.name AS "genres", COUNT(*) AS "cant_movies" FROM  movies AS m
+JOIN genres_movies AS gm ON m.id = gm.movie_id
+JOIN genres AS g ON gm.genre_id = g.id
+GROUP BY g.name
+ORDER BY cant_movies DESC
+LIMIT 1;
 ```
 
 4. List all the movies titles and the number of genres each movie has associated.
