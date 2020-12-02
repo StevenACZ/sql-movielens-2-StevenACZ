@@ -5,15 +5,16 @@ Copy and paste you SQL query replacing the lines `<your SQL query here>` inside 
 0. List the `title` and `genres` of all movies.
 
 ```SQL
-SELECT m.title, g.name as "genre" FROM movies as m
-JOIN genres_movies as gm ON m.id = gm.movie_id
-JOIN genres as g ON gm.genre_id = g.id;
+SELECT m.title, g.name AS "genre" FROM movies AS m
+JOIN genres_movies AS gm ON m.id = gm.movie_id
+JOIN genres AS g ON gm.genre_id = g.id;
 ```
 
 1. List all the users ids and their occupation
 
 ```SQL
-<your SQL query here>
+SELECT us.id, oc.name FROM users AS us
+JOIN occupations AS oc ON us.occupation_id = oc.id;
 ```
 
 2. List the number of movies group by genre
