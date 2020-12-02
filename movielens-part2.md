@@ -65,7 +65,11 @@ ORDER BY average_rating DESC;
 7. List the average rating per genre.
 
 ```SQL
-<your SQL query here>
+SELECT g.name, ROUND(AVG(ra.rating), 2) AS "average_rating" FROM genres_movies AS gm
+JOIN genres AS g ON g.id = gm.genre_id
+JOIN ratings AS ra ON ra.movie_id = gm.movie_id
+GROUP BY g.name
+ORDER BY average_rating DESC;
 ```
 
 8. Retrieve the most popular movie from 1995.
@@ -85,3 +89,15 @@ ORDER BY average_rating DESC;
 ```SQL
 <your SQL query here>
 ```
+
+```
+             List of relations
+ Schema |     Name      | Type  |  Owner
+--------+---------------+-------+----------
+ public | genres        | table | postgres
+ public | genres_movies | table | postgres
+ public | movies        | table | postgres
+ public | occupations   | table | postgres
+ public | ratings       | table | postgres
+ public | users         | table | postgres
+ ```
