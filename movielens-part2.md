@@ -48,7 +48,9 @@ GROUP BY m.title;
 5. List the number of users by occupation.
 
 ```SQL
-<your SQL query here>
+SELECT ocu.name, COUNT(*) AS "users_by_occupation" FROM users AS us
+JOIN occupations AS ocu ON us.occupation_id = ocu.id
+GROUP BY ocu.name;
 ```
 
 6. List the movie title and their average rating sorted from the most liked to the less liked.
