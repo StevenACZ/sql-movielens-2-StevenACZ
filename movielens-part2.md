@@ -56,7 +56,10 @@ GROUP BY ocu.name;
 6. List the movie title and their average rating sorted from the most liked to the less liked.
 
 ```SQL
-<your SQL query here>
+SELECT m.title, ROUND(AVG(ra.rating), 2) AS "average_rating" FROM movies AS m
+JOIN ratings AS ra ON ra.movie_id = m.id
+GROUP BY m.title
+ORDER BY average_rating DESC;
 ```
 
 7. List the average rating per genre.
