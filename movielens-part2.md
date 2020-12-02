@@ -95,17 +95,12 @@ GROUP BY m.title;
 10. List the top 10 movies for Lawyers released between 1990 and 1995.
 
 ```SQL
-<your SQL query here>
+SELECT DISTINCT m.title, occ.name, COUNT(*) AS "cant", EXTRACT(YEAR FROM m.release_date) AS "release_date" FROM m>
+JOIN ratings AS ra ON ra.movie_id = m.id
+JOIN users AS us ON us.id = ra.user_id
+JOIN occupations AS occ ON occ.id = us.occupation_id
+WHERE (EXTRACT(YEAR FROM m.release_date) BETWEEN 1990 AND 1995) AND occ.name = 'Lawyer'
+GROUP BY occ.name, m.title, m.release_date
+ORDER BY cant DESC
+LIMIT 10;
 ```
-
-```
-             List of relations
- Schema |     Name      | Type  |  Owner
---------+---------------+-------+----------
- public | genres        | table | postgres
- public | genres_movies | table | postgres
- public | movies        | table | postgres
- public | occupations   | table | postgres
- public | ratings       | table | postgres
- public | users         | table | postgres
- ```
