@@ -75,7 +75,11 @@ ORDER BY average_rating DESC;
 8. Retrieve the most popular movie from 1995.
 
 ```SQL
-<your SQL query here>
+SELECT m.title, ra.rating AS "rating", EXTRACT(YEAR FROM m.release_date) AS "release_data" FROM movies AS m
+JOIN ratings AS ra ON ra.movie_id = m.id
+WHERE EXTRACT(YEAR FROM m.release_date) = 1995
+ORDER BY ra.rating DESC
+LIMIT 1;
 ```
 
 9. Retieve the average age of the users who have rated the movie "Eye for an Eye (1996)"
